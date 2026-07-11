@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,13 +15,20 @@ export default function Home() {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
             maiores incidunt quibusdam?
           </p>
-
-          <button className="w-fit rounded-sm bg-green-200/70 p-4 transition-all duration-300 hover:bg-green-200/90 hover:scale-110">
-            Book yours now
-          </button>
+          <Link href="/contact">
+            <button className="w-fit rounded-sm bg-green-200/70 p-4 transition-all duration-300 hover:bg-green-200/90 hover:scale-110">
+              Book yours now
+            </button>
+          </Link>
         </div>
 
-        <Image src="/hero.png" alt="Home page" width={500} height={500}  className="animate-float"/>
+        <Image
+          src="/hero.png"
+          alt="Home page"
+          width={500}
+          height={500}
+          className="animate-float"
+        />
       </div>
     </section>
   );

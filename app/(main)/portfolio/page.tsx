@@ -36,7 +36,7 @@ export default function PortfolioPage() {
           <Link
             key={item.id}
             href={item.href}
-            className="group relative h-[420px] w-[250px] overflow-hidden border-2 border-gray-400"
+            className="group relative h-105 w-62.5 overflow-hidden border-2 border-gray-400"
           >
             <Image
               src={item.image}

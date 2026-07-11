@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function About() {
@@ -5,12 +6,7 @@ export default function About() {
     <div className="max-w-7xl mx-auto px-8 py-10 space-y-10">
       {/* Hero */}
       <div className="relative h-80 w-full overflow-hidden rounded-md">
-        <Image
-          src="/websites.jpg"
-          alt="About"
-          fill
-          className="object-cover"
-        />
+        <Image src="/websites.jpg" alt="About" fill className="object-cover" />
 
         <div className="absolute bottom-6 left-6">
           <h1 className="bg-green-300 px-3 py-2 text-3xl font-bold text-white">
@@ -68,10 +64,9 @@ export default function About() {
               Fast and Handy Mobile Apps
             </div>
           </div>
-
-          <button className="rounded bg-green-300 px-5 py-2 font-medium text-black transition hover:bg-green-400 hover:scale-110">
+          <Link href="/contact" className="inline-flex items-center justify-center text-white rounded bg-green-300 px-5 py-2 font-medium text-black transition hover:bg-green-400 hover:scale-110">
             Contact
-          </button>
+          </Link>
         </div>
       </div>
     </div>
