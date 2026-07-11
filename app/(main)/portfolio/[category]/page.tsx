@@ -106,7 +106,7 @@ export default function Category() {
             </div>
 
             {/* Image */}
-            <div className="relative h-[500px] overflow-hidden rounded-2xl">
+            <div className="relative h-125 overflow-hidden rounded-2xl">
               <Image
                 src={item.image}
                 alt={item.title}
