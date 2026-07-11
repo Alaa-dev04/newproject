@@ -64,7 +64,7 @@ export default function About() {
               Fast and Handy Mobile Apps
             </div>
           </div>
-          <Link href="/contact" className="inline-flex items-center justify-center text-white rounded bg-green-300 px-5 py-2 font-medium text-black transition hover:bg-green-400 hover:scale-110">
+          <Link href="/contact" className="inline-flex items-center justify-center text-white rounded bg-green-300 px-5 py-2 font-medium transition hover:bg-green-400 hover:scale-110">
             Contact
           </Link>
         </div>
