@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-
+import { SessionProvider } from "next-auth/react";
 export default function Providers({
   children,
 }: {
@@ -12,7 +12,9 @@ export default function Providers({
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <SessionProvider>
+        {children}
+      </SessionProvider>
     </QueryClientProvider>
   );
 }
