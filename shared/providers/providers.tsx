@@ -1,8 +1,8 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
 import { SessionProvider } from "next-auth/react";
+import { useState } from "react";
 export default function Providers({
   children,
 }: {

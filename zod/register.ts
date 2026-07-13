@@ -4,4 +4,5 @@ export const RegisterSchema = z.object({
     email:z.email().optional(),
     password:z.string().optional(),
 });
-export type RegisterSchema = z.infer< typeof RegisterSchema>
+
+export type RegisterSchemaType = z.infer<typeof RegisterSchema>;

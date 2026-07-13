@@ -45,14 +45,15 @@ export default function Register() {
           />
 
           {error && (
-            <p className="text-sm text-red-500">////</p>
+            <p className="text-sm text-red-500"></p>
           )}
 
           <button
             type="submit"
             disabled={false}
-            className="w-full rounded-lg bg-emerald-500 py-4 font-semibold text-white transition hover:bg-emerald-600 disabled:opacity-50"
+            className="w-full rounded-lg bg-emerald-500 text-white  py-4 font-semibold transition hover:bg-emerald-600 disabled:opacity-50"
           >
+            submit
             {/* {loading ? "Registering..." : "Register"} */}
           </button>
         </form>
@@ -67,7 +68,7 @@ export default function Register() {
           Already have an account?{" "}
           <Link
             href="/dashboard/login"
-            className="font-medium text-emerald-500 hover:underline"
+            className="font-medium text-white hover:underline"
           >
             Login
           </Link>
