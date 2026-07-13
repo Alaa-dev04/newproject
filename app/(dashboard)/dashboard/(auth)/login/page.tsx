@@ -1,94 +1,64 @@
-'use client';
-
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-
-export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      const result = await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        setError(result.error);
-      } else if (result?.ok) {
-        router.push('/dashboard');
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+"use client";
+import Link from "next/link";
+import useLogin from "@/hooks/login";
+export default function LoginForm() {
+  const { form, OnSubmit, OnCancel } = useLogin();
   return (
-    <div className="flex items-center justify-center min-h-screen ">
-      <div className="w-full max-w-md border border-gray-300 rounded-lg shadow-md shadow-gray-300 p-8">
-        <h1 className="text-3xl font-bold text-center text-green-200 mb-8">Login</h1>
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-md rounded-lg border border-gray-300 p-8 shadow-md shadow-gray-300">
+        <h1 className="mb-8 text-center text-3xl font-bold text-green-700">
+          Login
+        </h1>
 
-        {error && (
-          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form className="space-y-6" onSubmit={form.handleSubmit(OnSubmit)}>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email
+            <label className="mb-2 block text-sm font-medium text-gray-700">
+              User-Name
             </label>
+
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-200 focus:border-transparent outline-none"
+              type="text"
               placeholder="your@email.com"
+              {...form.register("username")}
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-transparent focus:ring-2 focus:ring-green-300"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="mb-2 block text-sm font-medium text-gray-700">
               Password
             </label>
+
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-200 focus:border-transparent outline-none"
+              {...form.register("password")}
               placeholder="••••••••"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-transparent focus:ring-2 focus:ring-green-300"
             />
           </div>
-
-          <button
+    <div className="flex justify-between items-center ">     <button
             type="submit"
-            disabled={loading}
-            className="w-full px-4 py-2 bg-green-700 text-white font-medium rounded-lg hover:bg-green-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className=" w-full rounded-lg bg-green-700 px-4 py-2 font-medium text-white transition hover:scale-105 hover:bg-green-600"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            Sign In
           </button>
+          <button
+            type="button"
+            onClick={OnCancel}
+            className="bg-gray-500 w-full rounded-lg m-3 text-white px-4 py-2 rounded"
+          >
+            cancel
+          </button></div>
+     
         </form>
 
         <div className="mt-6 text-center text-sm">
           <p className="text-gray-600">
-            Don't have an account?{' '}
-            <Link href="/dashboard/register" className="text-green-600 hover:underline font-medium">
+            Don't have an account?{" "}
+            <Link
+              href="/dashboard/register"
+              className="font-medium text-green-600 hover:underline"
+            >
               Sign up
             </Link>
           </p>

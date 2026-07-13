@@ -9,7 +9,7 @@ import { toast } from "sonner";
 type AddUser = {
   body: RegisterSchemaType;
 };
-const register = () => {
+const useregister = () => {
   //muteated function to create new user
   const adduser = async ({ body }: AddUser) => {
     const response = await fetch("https://dummyjson.com/users/add", {
@@ -61,4 +61,4 @@ const register = () => {
   }
 };
 
-export default register;
+export default useregister;

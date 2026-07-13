@@ -3,11 +3,11 @@
 
 import Link from "next/link";
 import error from "next/dist/api/error";
-
+import useregister from "@/hooks/register";
 
 export default function Register() {
  
-
+const {form ,OnSubmit,OnCancel }=useregister();
   return (
     <section className="flex min-h-[80vh] items-center justify-center px-6">
       <div className="w-full max-w-md rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-lg">
@@ -19,27 +19,28 @@ export default function Register() {
           Register to access your dashboard.
         </p>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={form.handleSubmit(OnSubmit)}>
           <input
-            name="name"
             type="text"
             placeholder="Username"
+            {...form.register('name')}
             required
             className="w-full rounded-lg border border-gray-700 bg-transparent p-4 outline-none focus:border-emerald-500"
           />
 
           <input
-            name="email"
             type="email"
             placeholder="Email"
+             {...form.register('email')}
             required
             className="w-full rounded-lg border border-gray-700 bg-transparent p-4 outline-none focus:border-emerald-500"
           />
 
           <input
-            name="password"
+        
             type="password"
             placeholder="Password"
+            {...form.register('password')}
             required
             className="w-full rounded-lg border border-gray-700 bg-transparent p-4 outline-none focus:border-emerald-500"
           />
@@ -54,7 +55,6 @@ export default function Register() {
             className="w-full rounded-lg bg-emerald-500 text-white  py-4 font-semibold transition hover:bg-emerald-600 disabled:opacity-50"
           >
             submit
-            {/* {loading ? "Registering..." : "Register"} */}
           </button>
         </form>
 
