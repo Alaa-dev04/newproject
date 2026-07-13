@@ -1,6 +1,6 @@
 import Navbar from "@/shared/navbar/navbar";
 import Footer from "@/shared/footer/footer";
-import Providers from "@/components/providers";
+import Providers from "@/shared/providers/providers";
 export default function MainLayout({
   children,
 }: {
